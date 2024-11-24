@@ -6,15 +6,15 @@ function getComputerChoice(){
      let value;
     // if number is between 1 to 3 set value to "Rock"
     if (RandomNumber >= 1 && RandomNumber <= 3 ){
-      value = "Rock"
+      value = "rock"
     }
     // if number is between 4 to 6 set value to "Paper"
     else if(RandomNumber>= 4 && RandomNumber <=6){
-        value ="Paper"
+        value ="paper"
     }
     // if number is between 7 to 9 set value to "Scissors"
     else if(RandomNumber >= 7 && RandomNumber <= 9){
-        value = "Scissor"
+        value = "scissor"
     }
     //return that value
     return value;
@@ -35,4 +35,25 @@ function getHumanChoice(){
 
 }
 
+function playRound(humanChoice, computerChoice){
+    console.log(humanChoice , computerChoice)
+  if(humanChoice ==="rock" && computerChoice === "scissor"){
+   console.log("you win")
+  }
+  else if(humanChoice === "scissor" && computerChoice === "paper"){
+    console.log("you win")
+  }
+  else if (humanChoice === "paper" && computerChoice === "rock"){
+    console.log("you win")
 
+  }
+  else if (humanChoice === computerChoice){
+    console.log("tie")
+  }
+  else {
+    console.log("you lose")
+  }
+}
+const humanChoice = getHumanChoice()
+const computerChoice = getComputerChoice()
+playRound(humanChoice, computerChoice)
