@@ -1,7 +1,7 @@
 
 function getComputerChoice(){
     // generate random number that gives us value from 1 to 9
-    const RandomNumber = Math. floor(Math. random() * (9 - 1 + 1) + 1)
+    let RandomNumber = Math. floor(Math. random() * (9 - 1 + 1) + 1)
      let value;
     // if number is between 1 to 3 set value to "Rock"
     if (RandomNumber >= 1 && RandomNumber <= 3 ){
@@ -15,9 +15,23 @@ function getComputerChoice(){
     else if(RandomNumber >= 7 && RandomNumber <= 9){
         value = "Scissor"
     }
-    console.log(value)
     //return that value
     return value;
 }
-getComputerChoice()
+
+
+function getHumanChoice(){
+    // get human choice 
+    let askHumanChoice = prompt("give user choice 'Rock', 'Paper' or 'Scissor ")
+   askHumanChoice = askHumanChoice.toLowerCase()
+
+  
+    // validate human choice id its not valid choice ask again 
+    if (askHumanChoice === "rock" || askHumanChoice ==="paper" || askHumanChoice === "scissor"){
+        return askHumanChoice;
+       }
+       else{getHumanChoice()}
+
+}
+
 
