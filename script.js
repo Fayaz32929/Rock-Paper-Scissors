@@ -1,4 +1,5 @@
-
+let computerScore = 0;
+let humanScore = 0;
 function getComputerChoice(){
     // generate random number that gives us value from 1 to 9
     let RandomNumber = Math. floor(Math. random() * (9 - 1 + 1) + 1)
@@ -30,7 +31,7 @@ function getHumanChoice(){
     if (askHumanChoice === "rock" || askHumanChoice ==="paper" || askHumanChoice === "scissor"){
         return askHumanChoice;
        }
-       else{getHumanChoice()}
+    else{getHumanChoice()}
 
 }
 
