@@ -36,24 +36,47 @@ function getHumanChoice(){
 }
 
 function playRound(humanChoice, computerChoice){
-    console.log(humanChoice , computerChoice)
   if(humanChoice ==="rock" && computerChoice === "scissor"){
-   console.log("you win")
+   alert(`you win this round your choice ${humanChoice} beats ${computerChoice}`)
+   humanScore++
   }
   else if(humanChoice === "scissor" && computerChoice === "paper"){
-    console.log("you win")
+    alert(`you win this round your choice ${humanChoice} beats ${computerChoice}`)
+    humanScore++
   }
   else if (humanChoice === "paper" && computerChoice === "rock"){
-    console.log("you win")
+    alert(`you win this round ${humanChoice} beats ${computerChoice}`)
+    humanScore++
 
   }
   else if (humanChoice === computerChoice){
-    console.log("tie")
+    alert(`tie your choice  ${humanChoice}  is same as computers choice ${computerChoice}`)
   }
   else {
-    console.log("you lose")
+    alert(`you lose computer choice  ${computerChoice} beats  your ${humanChoice}`)
+    computerScore++
   }
 }
-const humanChoice = getHumanChoice()
-const computerChoice = getComputerChoice()
-playRound(humanChoice, computerChoice)
+
+
+function playGame(){
+
+    for (let i = 0; i < 5; i++){
+        const humanChoice = getHumanChoice()
+        const computerChoice = getComputerChoice()
+        playRound(humanChoice, computerChoice)
+        
+    }
+    if (humanScore > computerScore){
+      alert(`you win your score is ${humanScore} and computers score is ${computerScore}`)
+    }
+    else if (humanScore < computerScore){
+        alert(`you lose your score is ${humanScore} and computers score is ${computerScore}`)
+
+    }
+    else(
+        alert(` match was draw your score ${humanScore} and computer score ${computerScore} is same`)
+    )
+
+}
+playGame()
