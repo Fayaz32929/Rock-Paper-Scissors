@@ -1,5 +1,9 @@
 let computerScore = 0;
 let humanScore = 0;
+let i = 0 
+let results = document.querySelector(".result")
+let playerScore = document.querySelector(".humanScore")
+let alScore = document.querySelector(".computerScore")
 function getComputerChoice(){
     // generate random number that gives us value from 1 to 9
     let RandomNumber = Math. floor(Math. random() * (9 - 1 + 1) + 1)
@@ -36,47 +40,90 @@ function getHumanChoice(){
 }
 
 function playRound(humanChoice, computerChoice){
+ 
+ 
+  if (i < 5){
+    
+    i++
   if(humanChoice ==="rock" && computerChoice === "scissor"){
-   alert(`you win this round your choice ${humanChoice} beats ${computerChoice}`)
+   results.textContent = (`you win this round your choice ${humanChoice} beats ${computerChoice}`)
    humanScore++
   }
   else if(humanChoice === "scissor" && computerChoice === "paper"){
-    alert(`you win this round your choice ${humanChoice} beats ${computerChoice}`)
+    results.textContent = (`you win this round your choice ${humanChoice} beats ${computerChoice}`)
     humanScore++
   }
   else if (humanChoice === "paper" && computerChoice === "rock"){
-    alert(`you win this round ${humanChoice} beats ${computerChoice}`)
+    results.textContent = (`you win this round ${humanChoice} beats ${computerChoice}`)
     humanScore++
 
   }
   else if (humanChoice === computerChoice){
-    alert(`tie your choice  ${humanChoice}  is same as computers choice ${computerChoice}`)
+    results.textContent = (`tie your choice  ${humanChoice}  is same as computers choice ${computerChoice}`)
   }
   else {
-    alert(`you lose computer choice  ${computerChoice} beats  your ${humanChoice}`)
+    results.textContent = (`you lose computer choice  ${computerChoice} beats  your ${humanChoice}`)
     computerScore++
   }
+  playerScore.textContent = humanScore;
+  alScore.textContent = computerScore;
 }
+  else{
+   i = 0 
+   if (humanScore > computerScore){
+      results.textContent= (`you win these 5 round your score is ${humanScore} and computers score is ${computerScore}`)
+    }
+    else if (humanScore < computerScore){
+        results.textContent= (`you lose these 5 round your score is ${humanScore} and computers score is ${computerScore}`)
+
+    }
+    else{
+        results.textContent = (` match was draw these 5 round your score ${humanScore} and computer score ${computerScore} is same`)
+  }
+   humanScore = 0
+   computerScore = 0
+  }
+ 
+
+}
+
+const btn = document.querySelectorAll("button")
+btn.forEach((selection)=>{
+  selection.addEventListener("click",(e)=> {
+  let humanChoice = e.target.id
+  let computerChoice = getComputerChoice()
+  playRound(humanChoice,computerChoice)
+  })
+})
+
+
 
 
 function playGame(){
 
-    for (let i = 0; i < 5; i++){
-        const humanChoice = getHumanChoice()
-        const computerChoice = getComputerChoice()
-        playRound(humanChoice, computerChoice)
-        
-    }
-    if (humanScore > computerScore){
-      alert(`you win your score is ${humanScore} and computers score is ${computerScore}`)
-    }
-    else if (humanScore < computerScore){
-        alert(`you lose your score is ${humanScore} and computers score is ${computerScore}`)
 
-    }
-    else(
-        alert(` match was draw your score ${humanScore} and computer score ${computerScore} is same`)
-    )
+
+
+
+    // for (let i = 0; i < 5; i++){
+    //     const humanChoice = getHumanChoice()
+    //     const computerChoice = getComputerChoice()
+    //     playRound(humanChoice, computerChoice)
+        
+    // }
+    // if (humanScore > computerScore){
+    //   alert(`you win your score is ${humanScore} and computers score is ${computerScore}`)
+    // }
+    // else if (humanScore < computerScore){
+    //     alert(`you lose your score is ${humanScore} and computers score is ${computerScore}`)
+
+    // }
+    // else(
+    //     alert(` match was draw your score ${humanScore} and computer score ${computerScore} is same`)
+    // )
+
+
+
 
 }
 playGame()
